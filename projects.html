@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mes Projets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: url('assets/background2.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: 'Raleway', sans-serif; 
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: auto;
+        }
+
+        nav {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(10, 10, 10, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #bb29f7;
+            text-shadow: 0 0 10px #bb29f7;
+        }
+
+        .projects-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 100px;
+        }
+
+        .project-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            width: 220px;
+            height: 320px;
+            background-color: #111;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #7229c7;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #bb29f7;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .project-specs {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+            text-align: left;
+            font-size: 0.9em;
+        }
+
+        .project-card:hover .project-specs {
+            display: block;
+        }
+
+        .add-project-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            border: 2px dashed #ffffff;
+            box-shadow: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span style="color: #bb29f7;  font-size: 1.5em; margin-left: 20px;">Jean-Yann</span>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="#">Experience</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="projects-container">
+        <div class="project-row">
+            <div class="project-card">
+                <a href="assets/gestion_parc.png" target="_blank"><img src="assets/gestion_parc.png" alt="Image Projet 1" class="project-image" style="width: 100%; height: auto;"></a>
+                <div class="project-title">Gestion de Parc Informatique</div>
+                <div class="project-specs">Gestion de parc informatique.En HTML, CSS Backend:Php, MariaDB</div>
+            </div>
+            <div class="project-card">
+                <a href="assets/booki.png" target="_blank"><img src="assets/booki.png" alt="Image Projet 2" class="project-image" style="width: 100%; height: auto;"></a>
+                <div class="project-title">Booki</div>
+                <div class="project-specs"> Réalisation d'une Page Web d'un site commercant en HTML , Css</div>
+            </div>
+            <div class="project-card">
+                <a href="assets/LafacAcademy.png" target="_blank"><img src="assets/LafacAcademy.png" alt="Image Projet 3" class="project-image" style="width: 100%; height: auto;"></a>
+                <div class="project-title">LafacAcademy</div>
+                <div class="project-specs">Réalisation de Pages Webs WordPress pour une association à but Lucratif</div>
+            </div>
+            <div class="project-card">
+                <a href="assets/Text_reco.png" target="_blank"><img src="assets/Text_reco.png" alt="Text Recognition AI" class="project-image" style="width: 100%; height: auto; "></a>
+                <div class="project-title" style="color: #000000;">Text Recognition</div>
+                <div class="project-specs">Création d'un application Android de Text Recognition avec les services Azure AI.</div>
+            </div>
+        </div>
+        <div class="project-row">
+            <div class="project-card add-project-card">
+                <a href="assets/Projet_COMPUSKINGS.pdf" target="_blank" style="color: #ffffff; text-decoration: none;">Etudes Projets CompuKings (Voir PDF)</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
