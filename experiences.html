@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean-Yann - Expériences en Quinconce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        body {
+            background: url('assets/background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px #a020f0;
+            position: relative;
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #a020f0;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+                color: #a020f0;
+                font-weight: bold;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: rgba(26, 26, 26, 0.95);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 0 15px #a020f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px #a020f0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #a020f0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .container {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .container.left {
+            left: 0;
+        }
+
+        .container.right {
+            left: 50%;
+        }
+
+        .container::before {
+            content: " ";
+            position: absolute;
+            top: 15px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #a020f0;
+            border: 4px solid #fff;
+            z-index: 1;
+        }
+
+        .container.left::before {
+            right: -13px;
+        }
+
+        .container.right::before {
+            left: -13px;
+        }
+
+        .content {
+            padding: 20px;
+            background: #232323;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
+        }
+
+        .container.left .content {
+            margin-right: 30px;
+        }
+
+        .container.right .content {
+            margin-left: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #a020f0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('nav ul');
+
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="aboutme.html">Skills</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="timeline">
+        <div class="container left">
+            <div class="content">
+                <h2>Maya Designer: Réalisation de Pages Web et Sécurisation de Sites
+                </h2>
+                <p>Lors de mon expérience Erasmus en République Tchèque, j'ai eu l'opportunité de réaliser un stage de deux mois au sein d'une entreprise locale. Durant cette période, j'ai non seulement approfondi mes compétences en branding et stratégie de marque, mais j'ai également conçu et développé des pages web modernes et fonctionnelles. En parallèle, j'ai travaillé sur la sécurisation d’un site internet, en appliquant des pratiques rigoureuses en matière de cybersécurité pour protéger les données sensibles et renforcer la résilience du site face aux menaces en ligne.
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>Wiwaks Web Agency</h2>
+                <p>Dans le cadre de mon stage, j'ai conçu et développé des pages web produits pour une association à lucratif en étant le satgirare d'une entrprise nommé Wiwaks Web Agency. J'ai utilisé des plug-ins WordPress pour administrer efficacement le site tout en intégrant des fonctionnalités personnalisées. Parallèlement, j'ai également codé en HTML et CSS pour assurer un design et une structure sur-mesure, répondant aux besoins spécifiques de l'association.</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>XtraLog</h2>
+                <p>Au cours de mon stage, j'ai eu l'opportunité de concevoir et de développer une application web de gestion de parc informatique, adaptée à un contexte spécifique. J'ai pris en charge le développement complet de l'application, aussi bien sur la partie front-end que back-end. En parallèle, j'ai conçu et mis en place les jeux de tests pour valider les fonctionnalités, ainsi que la base de données, en rédigeant les requêtes nécessaires pour assurer une communication fluide entre l'application et la base de données.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>Concours Programmeur aux Finances Publiques DGFIP</h2>
+                <p>Passage du concours de programmeur externe aux finances publiques à 17 ans. J'ai été admissible, ce qui a marqué le début de mon parcours dans la programmation.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
