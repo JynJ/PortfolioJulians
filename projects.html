@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Raleway', sans-serif;
+        }
         body {
             background: url('assets/background2.png') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
-            font-family: 'Raleway', sans-serif; 
             height: 100vh;
             margin: 0;
             display: flex;
@@ -22,14 +27,16 @@
             overflow: auto;
         }
 
+        /* === NAVIGATION UNIFIÉE === */
         nav {
-            width: 100%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 20px 50px;
             background-color: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
             box-shadow: 0 0 15px #a020f0;
+            width: 100%;
             position: relative;
         }
 
@@ -37,6 +44,7 @@
             display: none;
             cursor: pointer;
             font-size: 1.8em;
+            color: #a020f0;
         }
 
         nav ul {
@@ -66,10 +74,7 @@
         @media (max-width: 768px) {
             .nav-toggle {
                 display: block;
-                color: #a020f0;
-                font-weight: bold;
             }
-
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -81,11 +86,9 @@
                 padding: 20px;
                 box-shadow: 0 0 15px #a020f0;
             }
-
             nav ul.active {
                 display: flex;
             }
-
             nav ul li {
                 margin: 10px 0;
             }
@@ -176,57 +179,70 @@
             cursor: pointer;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('nav ul');
-
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        });
-    </script>
 </head>
 <body>
+    <!-- NAVIGATION -->
     <nav>
         <div class="nav-toggle"><i class="fas fa-bars"></i></div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="projects.html">Projects</a></li>
             <li><a href="experiences.html">Experience</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="lep_associations.html">Mes Engagements</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-    
+
     <div class="projects-container">
         <div class="project-row">
             <div class="project-card">
-                <a href="assets/gestion_parc.png" target="_blank"><img src="assets/gestion_parc.png" alt="Image Projet 1" class="project-image" style="width: 100%; height: auto;"></a>
+                <a href="assets/gestion_parc.png" target="_blank">
+                    <img src="assets/gestion_parc.png" alt="Image Projet 1" class="project-image">
+                </a>
                 <div class="project-title">Gestion de Parc Informatique</div>
-                <div class="project-specs">Gestion de parc informatique.En HTML, CSS Backend:Php, MariaDB</div>
+                <div class="project-specs">Gestion de parc informatique. En HTML, CSS. Backend : PHP, MariaDB</div>
             </div>
             <div class="project-card">
-                <a href="assets/booki.png" target="_blank"><img src="assets/booki.png" alt="Image Projet 2" class="project-image" style="width: 100%; height: auto;"></a>
+                <a href="assets/booki.png" target="_blank">
+                    <img src="assets/booki.png" alt="Image Projet 2" class="project-image">
+                </a>
                 <div class="project-title">Booki</div>
-                <div class="project-specs"> Réalisation d'une Page Web d'un site commercant en HTML , Css</div>
+                <div class="project-specs">Réalisation d'une page web d'un site commerçant en HTML, CSS</div>
             </div>
             <div class="project-card">
-                <a href="assets/LafacAcademy.png" target="_blank"><img src="assets/LafacAcademy.png" alt="Image Projet 3" class="project-image" style="width: 100%; height: auto;"></a>
+                <a href="assets/LafacAcademy.png" target="_blank">
+                    <img src="assets/LafacAcademy.png" alt="Image Projet 3" class="project-image">
+                </a>
                 <div class="project-title">LafacAcademy</div>
-                <div class="project-specs">Réalisation de Pages Webs WordPress pour une association à but Lucratif</div>
+                <div class="project-specs">Pages WordPress pour une association à but lucratif</div>
             </div>
             <div class="project-card">
-                <a href="assets/Text_reco.png" target="_blank"><img src="assets/Text_reco.png" alt="Text Recognition AI" class="project-image" style="width: 100%; height: auto; "></a>
-                <div class="project-title" style="color: #000000;">Text Recognition</div>
-                <div class="project-specs">Création d'un application Android de Text Recognition avec les services Azure AI.</div>
+                <a href="assets/Text_reco.png" target="_blank">
+                    <img src="assets/Text_reco.png" alt="Text Recognition AI" class="project-image">
+                </a>
+                <div class="project-title" style="color:#000;">Text Recognition</div>
+                <div class="project-specs">Application Android de text recognition avec Azure AI.</div>
             </div>
         </div>
         <div class="project-row">
             <div class="project-card add-project-card">
-                <a href="assets/Projet_COMPUSKINGS.pdf" target="_blank" style="color: #ffffff; text-decoration: none;">Etudes Projets CompuKings (Voir PDF)</a>
+                <a href="assets/Projet_COMPUSKINGS.pdf" target="_blank" style="color:#fff; text-decoration:none;">
+                    Etudes Projets CompuKings (Voir PDF)
+                </a>
             </div>
         </div>
     </div>
 
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu   = document.querySelector('nav ul');
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>

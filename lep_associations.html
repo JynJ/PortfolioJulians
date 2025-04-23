@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Engagement & Valeurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Raleway', sans-serif; }
+        body { background: url('assets/background.png') no-repeat center center fixed; background-size: cover; color: #fff; }
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px; background-color: rgba(26,26,26,0.8); border-radius:10px;
+            box-shadow:0 0 15px #a020f0; position: relative;
+        }
+        .nav-toggle { display: none; cursor: pointer; font-size:1.8em; }
+        nav ul { display:flex; list-style:none; margin-left:auto; }
+        nav ul li { margin-left:20px; }
+        nav ul li a {
+            text-decoration:none; color:#fff; font-weight:bold;
+            padding:10px 15px; border-radius:5px;
+            transition: background-color .3s, color .3s;
+        }
+        nav ul li a:hover { background-color:#a020f0; color:#fff; }
+        @media (max-width:768px) {
+            .nav-toggle { display:block; color:#a020f0; }
+            nav ul {
+                display:none; flex-direction:column; position:absolute;
+                top:100%; right:0; width:100%; padding:20px;
+                background-color:rgba(26,26,26,0.95); box-shadow:0 0 15px #a020f0;
+            }
+            nav ul.active { display:flex; }
+            nav ul li { margin:10px 0; }
+        }
+        .lep-container {
+            max-width:1200px; margin:50px auto; padding:0 20px;
+            display:flex; flex-wrap:wrap; gap:30px; justify-content:center;
+        }
+        .lep-card {
+            background:#232323; padding:20px; border-radius:10px;
+            box-shadow:0 0 10px rgba(160,32,240,0.3); width:350px;
+            transition: transform .3s, box-shadow .3s;
+        }
+        .lep-card:hover {
+            transform:translateY(-10px);
+            box-shadow:0 0 20px rgba(160,32,240,0.6);
+        }
+        .lep-card h3 { font-size:1.8em; color:#a020f0; margin-bottom:15px; }
+        .lep-card ul { list-style:disc inside; line-height:1.6; margin-bottom:15px; }
+        .lep-card p { line-height:1.6; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('nav ul');
+            navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="experiences.html">Experience</a></li>
+            <li><a href="lep_associations.html">Associations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="lep-container">
+        <div class="lep-card">
+            <h3>Mon LEP (2 ans)</h3>
+            <ul>
+                <li>Membre actif du bureau d'astronomie : préparation des soirées d’observation et animations.</li>
+                <li>Membre d'un club de jeu vidéo : organisation de tournois Fortnite avec cash prize, gestion des participants.</li>
+                <li>Membre de l’ESN club sportif en République tchèque : aide à la mise en place des infrastructures lors des matchs et tournoi final.</li>
+                <li>Soutien à mes camarades en Erasmus et à l’école : tutorat en anglais pour préparation TOEIC et aide en informatique sur diverses notions.</li>
+                <li>Accompagnement d'étudiants de la Barbade en Martinique : visites guidées et échanges culturels.</li>
+                <li>Je me suis aussi inscrit a des clubs pour des cleans walk mais depuis l'année dernière il n'y en a plus eu mais je prévois d'en participer a une prochainement.</li>
+
+            </ul>
+        </div>
+        <div class="lep-card">
+            <h3>Mes Valeurs & Anti-valeurs</h3>
+            <p><strong>Valeurs :</strong></p>
+            <ul>
+                <li>Entraide : toujours prêt à soutenir et partager.</li>
+                <li>Rigueur : méthodique dans chaque projet.</li>
+                <li>Innovation : ouverture aux nouvelles idées et technologies.</li>
+            </ul>
+            <p><strong>Anti-valeurs :</strong></p>
+            <ul>
+                <li>Individualisme : je privilégie le collectif.</li>
+                <li>Procrastination : je combats la remise à plus tard.</li>
+                <li>Passivité : je recherche l’action et l’engagement.</li>
+            </ul>
+        </div>
+        <div class="lep-card">
+            <h3>Dans 5 ans</h3>
+            <p>
+                Travailler en cybersécurité en Martinique pour soutenir mon île au sein d’une population vieillissante,
+                et avoir lancé ma propre startup spécialisée en réseaux ou en développement d’applications de vie.
+
+                J'aimerais aussi pouvoir traviller pour l'état par exemple peut etre à l'armée car selon moi dans mon domaine qu'est la cyberdéfense.
+
+                Le contexte de guerre et ou protection d'un pays permt d'acquérir une panoplie d'expériences surpassant celle en entreprise
+            </p>
+        </div>
+    </div>
+</body>
+</html>
