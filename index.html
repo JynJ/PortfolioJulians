@@ -43,6 +43,12 @@
             backdrop-filter: blur(10px);
         }
 
+        .nav-brand {
+            color: #a020f0;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
         .nav-toggle {
             display: none;
             cursor: pointer;
@@ -286,6 +292,12 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                width: calc(100% - 40px);
+                left: 20px;
+            }
+
             .nav-toggle {
                 display: block;
             }
@@ -295,11 +307,13 @@
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
+                left: 0;
                 right: 0;
                 background-color: rgba(26, 26, 26, 0.95);
                 width: 100%;
                 padding: 20px;
                 box-shadow: 0 0 15px #a020f0;
+                z-index: 1000;
             }
             
             nav ul.active {
@@ -310,12 +324,59 @@
                 margin: 10px 0;
             }
 
+            .content {
+                margin-top: 120px;
+                padding: 0 20px;
+            }
+
             .content h1 {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
 
             .content h2 {
-                font-size: 1.5em;
+                font-size: 1.4em;
+            }
+
+            .content p {
+                font-size: 0.9em;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 15px;
+            }
+
+            .content .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .content .buttons a {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content h1 {
+                font-size: 1.8em;
+            }
+
+            .content h2 {
+                font-size: 1.2em;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .content .buttons a {
+                width: 180px;
+                padding: 8px 16px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -323,7 +384,8 @@
 <body>
     <header>
         <nav>
-            <div class="nav-toggle" style="color: #a020f0; font-weight: bold;">Jean-Yann</div>
+            <div class="nav-brand" style="color: #a020f0; font-weight: bold; font-size: 1.5em;">Jean-Yann</div>
+            <div class="nav-toggle"><i class="fas fa-bars"></i></div>
             <ul>
                 <li><a href="aboutme.html">About Me</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -358,6 +420,20 @@
 
         navToggle.addEventListener('click', () => {
             nav.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        // Fermer le menu quand on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+                nav.classList.remove('active');
+            }
         });
     </script>
 </body>
