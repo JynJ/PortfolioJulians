@@ -103,6 +103,7 @@
             align-items: center;
             gap: 50px;
             margin-top: 100px;
+            animation: zoomIn 1s ease-out;
         }
 
         .project-row {
@@ -112,6 +113,7 @@
             width: 90%;
             gap: 20px;
             flex-wrap: wrap;
+            animation: slideInFromTop 1s ease-out 0.3s both;
         }
 
         .project-card {
@@ -120,7 +122,7 @@
             background-color: #111;
             border-radius: 15px;
             box-shadow: 0 0 15px #7229c7;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -129,11 +131,33 @@
             padding: 10px;
             overflow: hidden;
             position: relative;
+            animation: flipInY 1s ease-out 0.6s both;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.6s; }
+        .project-card:nth-child(2) { animation-delay: 0.8s; }
+        .project-card:nth-child(3) { animation-delay: 1.0s; }
+        .project-card:nth-child(4) { animation-delay: 1.2s; }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(160, 32, 240, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
         }
 
         .project-card:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px #bb29f7;
+            transform: scale(1.1) rotateY(5deg);
+            box-shadow: 0 0 30px #bb29f7;
         }
 
         .project-image {
@@ -177,6 +201,52 @@
             border: 2px dashed #ffffff;
             box-shadow: none;
             cursor: pointer;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        /* Animations spécifiques à Projects */
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flipInY {
+            from {
+                opacity: 0;
+                transform: perspective(400px) rotateY(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(400px) rotateY(0deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                border-color: #ffffff;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                border-color: #a020f0;
+                box-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
+            }
         }
     </style>
 </head>
@@ -190,6 +260,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="experiences.html">Experience</a></li>
             <li><a href="lep_associations.html">Mes Engagements</a></li>
+            <li><a href="esaip.html">ESAIP</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -229,6 +300,11 @@
             <div class="project-card add-project-card">
                 <a href="assets/Projet_COMPUSKINGS.pdf" target="_blank" style="color:#fff; text-decoration:none;">
                     Etudes Projets CompuKings (Voir PDF)
+                </a>
+            </div>
+            <div class="project-card add-project-card">
+                <a href="assets/RapportGreenLogistic.pdf" target="_blank" style="color:#fff; text-decoration:none;">
+                    Green Logistics (Voir PDF)
                 </a>
             </div>
         </div>

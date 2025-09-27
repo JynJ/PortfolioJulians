@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESAIP - École d'Ingénieur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        body {
+            background: url('assets/background2.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: auto;
+        }
+
+        /* === NAVIGATION UNIFIÉE === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px #a020f0;
+            width: 100%;
+            position: relative;
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8em;
+            color: #a020f0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #a020f0;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: rgba(26, 26, 26, 0.95);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 0 15px #a020f0;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+
+        .esaip-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 100px;
+            padding: 0 20px;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .esaip-header {
+            text-align: center;
+            max-width: 800px;
+            animation: slideInFromTop 1s ease-out 0.3s both;
+        }
+
+        .esaip-header h1 {
+            font-size: 3em;
+            color: #a020f0;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        .esaip-header p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .esaip-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .esaip-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(160, 32, 240, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(160, 32, 240, 0.2);
+            animation: slideInFromBottom 1s ease-out 0.9s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .esaip-card:nth-child(1) { animation-delay: 0.9s; }
+        .esaip-card:nth-child(2) { animation-delay: 1.1s; }
+        .esaip-card:nth-child(3) { animation-delay: 1.3s; }
+        .esaip-card:nth-child(4) { animation-delay: 1.5s; }
+        .esaip-card:nth-child(5) { animation-delay: 1.7s; }
+        .esaip-card:nth-child(6) { animation-delay: 1.9s; }
+
+        .esaip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(160, 32, 240, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .esaip-card:hover::before {
+            left: 100%;
+        }
+
+        .esaip-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 0 40px rgba(160, 32, 240, 0.8);
+        }
+
+        .esaip-card h3 {
+            font-size: 1.8em;
+            color: #a020f0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .esaip-card p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .esaip-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .esaip-card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .esaip-card ul li:before {
+            content: "▶";
+            color: #a020f0;
+            position: absolute;
+            left: 0;
+        }
+
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .partnership-item {
+            background: rgba(51, 51, 51, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(160, 32, 240, 0.3);
+        }
+
+        .partnership-item h4 {
+            color: #a020f0;
+            margin-bottom: 10px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(51, 51, 51, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(160, 32, 240, 0.3);
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #a020f0;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Animations spécifiques à ESAIP */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(160, 32, 240, 0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="experiences.html">Experience</a></li>
+            <li><a href="lep_associations.html">Mes Engagements</a></li>
+            <li><a href="esaip.html">ESAIP</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="esaip-container">
+        <div class="esaip-header">
+            <h1><i class="fas fa-university"></i> Mon École : ESAIP</h1>
+            <p>Voici mon école, l'ESAIP École d'Ingénieur, où je poursuis ma formation en CyberSécurité dans le cadre du Programme Grande École. Je vous présente ce qu'elle propose, notamment dans ma filière, ainsi que ses partenariats qui enrichissent notre formation.</p>
+        </div>
+
+        <div class="esaip-content">
+            <div class="esaip-card">
+                <h3><i class="fas fa-shield-alt"></i> Ma Formation en CyberSécurité</h3>
+                <p>Dans ma filière CyberSécurité, l'ESAIP nous forme aux défis de la sécurité numérique avec un diplôme d'Ingénieur équivalent Master bac+5. Voici ce que nous étudions :</p>
+                <ul>
+                    <li>Spécialisation en sécurité des réseaux et systèmes</li>
+                    <li>Formation en cyberdéfense et analyse de risques</li>
+                    <li>Cryptographie et sécurité des données</li>
+                    <li>Forensique numérique et investigation</li>
+                    <li>Gestion des incidents de sécurité</li>
+                    <li>Conformité et réglementation cybersécurité</li>
+                </ul>
+            </div>
+
+            <div class="esaip-card">
+                <h3><i class="fas fa-cogs"></i> Ce qui Riche Notre Formation</h3>
+                <p>Ce qui rend notre formation intéressante, c'est l'approche pratique et les méthodes innovantes de l'ESAIP :</p>
+                <ul>
+                    <li>Projets collaboratifs et études de cas réels</li>
+                    <li>Laboratoires équipés des dernières technologies</li>
+                    <li>Simulations d'attaques et exercices de défense</li>
+                    <li>Intervention d'experts du secteur</li>
+                    <li>Formation en alternance et stages en entreprise</li>
+                    <li>Certifications professionnelles intégrées</li>
+                </ul>
+            </div>
+
+            <div class="esaip-card">
+                <h3><i class="fas fa-handshake"></i> Les Partenariats de Mon École</h3>
+                <p>L'ESAIP a développé des partenariats intéressants avec des entreprises et institutions qui enrichissent notre formation d'étudiants :</p>
+                <div class="partnerships-grid">
+                    <div class="partnership-item">
+                        <h4>Entreprises</h4>
+                        <p>Orange, Thales, Airbus, Capgemini, Atos</p>
+                    </div>
+                    <div class="partnership-item">
+                        <h4>Institutions</h4>
+                        <p>ANSSI, Gendarmerie Nationale, Armée</p>
+                    </div>
+                    <div class="partnership-item">
+                        <h4>Universités</h4>
+                        <p>Partenariats internationaux Erasmus+</p>
+                    </div>
+                    <div class="partnership-item">
+                        <h4>Organismes</h4>
+                        <p>CESI, CNAM, Pôle Emploi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="esaip-card">
+                <h3><i class="fas fa-chart-line"></i> Les Résultats de Mon École</h3>
+                <p>Voici quelques chiffres qui montrent la qualité de la formation d'Ingénieur à l'ESAIP :</p>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <div class="stat-label">Taux d'emploi</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <div class="stat-label">Partenaires entreprises</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <div class="stat-label">Années d'expérience</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <div class="stat-label">Ingénieurs diplômés</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="esaip-card">
+                <h3><i class="fas fa-globe"></i> L'International à l'ESAIP</h3>
+                <p>L'ESAIP nous encourage à nous ouvrir à l'international avec des programmes d'échange et des partenariats mondiaux :</p>
+                <ul>
+                    <li>Programmes Erasmus+ dans toute l'Europe</li>
+                    <li>Partenariats avec des universités américaines et asiatiques</li>
+                    <li>Stages internationaux en entreprise</li>
+                    <li>Formation en anglais disponible</li>
+                    <li>Double diplôme possible</li>
+                    <li>Réseau d'anciens étudiants internationaux</li>
+                </ul>
+            </div>
+
+            <div class="esaip-card">
+                <h3><i class="fas fa-trophy"></i> La Reconnaissance de Mon École</h3>
+                <p>L'ESAIP bénéficie de reconnaissances officielles qui attestent de la qualité de notre formation d'Ingénieur :</p>
+                <ul>
+                    <li>Diplôme d'Ingénieur habilité par la CTI</li>
+                    <li>Label EESPIG (Établissement d'Enseignement Supérieur Privé d'Intérêt Général)</li>
+                    <li>Membre de la Conférence des Grandes Écoles</li>
+                    <li>Certification ISO 9001</li>
+                    <li>Reconnaissance internationale des diplômes</li>
+                    <li>Partenariat avec l'État français</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('nav ul');
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

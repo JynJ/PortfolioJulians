@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jean-Yann - Ingénieur de 4ème année en CyberSécurité à l'ESAIP Ecole d'Ingénieur </title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -30,15 +31,29 @@
         nav {
             position: absolute;
             top: 20px;
-            width: 100%;
+            width: calc(100% - 40px);
+            left: 20px;
             display: flex;
             justify-content: space-between;
-            padding: 0 50px;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px #a020f0;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8em;
+            color: #a020f0;
         }
 
         nav ul {
             display: flex;
             list-style: none;
+            margin-left: auto;
         }
 
         nav ul li {
@@ -49,37 +64,51 @@
             text-decoration: none;
             color: #fff;
             font-weight: bold;
-            transition: color 0.3s;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
         }
 
         nav ul li a:hover {
-            color: #a020f0;
+            background-color: #a020f0;
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         .content {
             text-align: center;
             max-width: 800px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .content h1 {
             font-size: 3em;
             color: #a020f0;
             margin-bottom: 10px;
+            animation: slideInLeft 1s ease-out 0.3s both;
+            text-shadow: 0 0 20px rgba(160, 32, 240, 0.5);
         }
 
         .content h2 {
             font-size: 2em;
             margin-bottom: 20px;
+            animation: slideInRight 1s ease-out 0.6s both;
         }
 
         .content p {
             font-size: 1em;
             line-height: 1.5;
             margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 0.9s both;
         }
 
         .content .buttons {
             margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: bounceIn 1s ease-out 1.2s both;
         }
 
         .content .buttons a {
@@ -89,11 +118,42 @@
             padding: 10px 20px;
             border-radius: 5px;
             font-weight: bold;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content .buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .content .buttons a:hover::before {
+            left: 100%;
         }
 
         .content .buttons a:hover {
             background-color: #8b00cc;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(160, 32, 240, 0.4);
+        }
+
+        .content .buttons a.github {
+            background-color: #333;
+        }
+
+        .content .buttons a.github:hover {
+            background-color: #555;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
 
         .profile-img {
@@ -103,49 +163,173 @@
             border: 5px solid #a020f0;
             overflow: hidden;
             margin: 0 auto 20px;
+            animation: pulse 2s ease-in-out infinite, fadeInScale 1s ease-out 0.1s both;
+            position: relative;
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #a020f0, #bb29f7, #a020f0);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+            z-index: -1;
         }
 
         .profile-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(160, 32, 240, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(160, 32, 240, 0.8);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                background: rgba(0, 0, 0, 0.9);
-                position: absolute;
-                top: 60px;
-                right: 0;
-                width: 100%;
-                display: none;
-                padding: 20px;
+            .nav-toggle {
+                display: block;
             }
-
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: rgba(26, 26, 26, 0.95);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 0 15px #a020f0;
+            }
+            
             nav ul.active {
                 display: flex;
             }
-
+            
             nav ul li {
                 margin: 10px 0;
             }
 
-            .nav-toggle { cursor: pointer; color: #a020f0; font-size: 24px; }
+            .content h1 {
+                font-size: 2.5em;
+            }
+
+            .content h2 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="nav-toggle" style="color: #a020f0;">Jean-Yann</div>
+            <div class="nav-toggle" style="color: #a020f0; font-weight: bold;">Jean-Yann</div>
             <ul>
                 <li><a href="aboutme.html">About Me</a></li>
-                <li><a href="aboutme.html">Skills</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="experiences.html">Experience</a></li>
                 <li><a href="lep_associations.html">Mes Engagements</a></li>
-
+                <li><a href="esaip.html">ESAIP</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -157,7 +341,14 @@
             <h2>Je suis un Ingénieur de 4ème année spécialisé en CyberSécurité </h2>
             <p>Vous trouverez dans ce Port-Folio mon Parcours Scolaire ainsi que mes expériences professionelles.</p>      
             <div class="buttons">
-                <a href="assets/CV_Ingénieur_Cyber_JULIANS_Jean-Yann.pdf" download>Mon CV</a>
+                <a href="assets/CV_Ingénieur_Cyber_JULIANS_Jean-Yann.pdf" download>
+                    <i class="fas fa-download"></i>
+                    Mon CV
+                </a>
+                <a href="https://github.com/JynJ" target="_blank" class="github">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
             </div>
         </div>
     </header>

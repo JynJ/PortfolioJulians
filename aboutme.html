@@ -98,6 +98,7 @@
             box-shadow: 0 0 20px #a020f0;
             display: flex;
             gap: 20px;
+            animation: slideInFromBottom 1s ease-out;
         }
 
         .left-section {
@@ -117,11 +118,13 @@
             align-items: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #a020f0;
+            animation: slideInFromLeft 1s ease-out 0.3s both;
         }
 
         .about-header h1 {
             font-size: 2.5em;
             color: #a020f0;
+            animation: glowPulse 2s ease-in-out infinite;
         }
 
         .about-header .profile-img {
@@ -130,27 +133,37 @@
             border-radius: 50%;
             overflow: hidden;
             border: 5px solid #a020f0;
+            animation: rotateIn 1s ease-out 0.6s both;
+            transition: transform 0.3s ease;
+        }
+
+        .about-header .profile-img:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .about-header .profile-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
         .about-content {
             margin-top: 30px;
+            animation: fadeInUp 1s ease-out 0.9s both;
         }
 
         .about-content h2 {
             font-size: 2em;
             color: #a020f0;
             margin-bottom: 15px;
+            animation: slideInFromRight 1s ease-out 1.2s both;
         }
 
         .about-content p {
             line-height: 1.6;
             margin-bottom: 15px;
+            animation: fadeIn 1s ease-out 1.5s both;
         }
 
         .about-section {
@@ -162,14 +175,32 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             height: 100%;
             flex-grow: 1;
+            animation: slideInFromBottom 1s ease-out 1.8s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(160, 32, 240, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .about-section .card:hover::before {
+            left: 100%;
         }
 
         .about-section .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(160, 32, 240, 0.8);
         }
 
         .about-section .card h3 {
@@ -222,6 +253,92 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
             max-width: 400px;
+            animation: fadeInLeft 1s ease-out 2.1s both;
+        }
+
+        /* Animations spécifiques à About Me */
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-180deg) scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(160, 32, 240, 0.8);
+            }
         }
     </style>
     <script>
@@ -243,7 +360,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="experiences.html">Experience</a></li>
             <li><a href="lep_associations.html">Mes Engagements</a></li>
-
+            <li><a href="esaip.html">ESAIP</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -257,19 +374,25 @@
             </div>
             <div class="about-content">
                 <h2>JULIANS Jean-Yann </h2>
-                <p>Ingénieur en 4ème année de CyberSécurité à l'ESAIP Ecole d'Ingénieur, passionné par la protection des données et les technologies d'avenir. J'ai acquis une solide expérience dans la mise en œuvre de solutions de sécurité pour les systèmes réseaux et les applications.</p>
+                <p>Ingénieur en 4ème année de CyberSécurité à l'ESAIP Ecole d'Ingénieur dans le cadre du Programme Grande École, passionné par la protection des données et les technologies d'avenir. Actuellement en Erasmus en Espagne à l'Université de Valladolid où j'approfondis l'architecture des réseaux, le forensique et la cybersécurité. J'ai acquis une solide expérience dans la mise en œuvre de solutions de sécurité pour les systèmes réseaux et les applications.</p>
             </div>
             <div class="about-section">
                 <div class="card">
                     <h3><i class="fas fa-user"></i> Biography</h3>
-                    <p>Je suis titulaire d'un BTS option Solution Logicielle Application Metier et j'étudie actuellement à l'ESAIP École d'Ingénieur, où je me forme en tant qu'ingénieur avec une spécialisation prévue en réseaux et CyberSécurité. De plus, j'ai réalisé un Erasmus en République tchèque à l'Université Technique d'Ostrava, où j'ai étudié les réseaux, la cryptographie et l'algorithmie en anglais. À 17 ans, j'ai passé le concours de programmeur externe aux finances publiques, pour lequel j'ai été admissible.</p>
+                    <p>Je suis titulaire d'un BTS option Solution Logicielle Application Metier et j'étudie actuellement à l'ESAIP École d'Ingénieur dans le cadre du Programme Grande École, où je me forme en tant qu'Ingénieur avec une spécialisation prévue en réseaux et CyberSécurité. De plus, j'ai réalisé un Erasmus en République tchèque à l'Université Technique d'Ostrava, où j'ai étudié les réseaux, la cryptographie et l'algorithmie en anglais. À 17 ans, j'ai passé le concours de programmeur externe aux finances publiques, pour lequel j'ai été admissible.</p>
                     <div class="icons-container">
                         <div class="icon-container">
                             <i class="fas fa-university icon"></i>
-                            <span class="icon-text">École d'ingénieur</span>
+                            <span class="icon-text">École d'Ingénieur</span>
                         </div>
                         <div class="education-description">
-                            <p>- ESAIP École d'Ingénieur, spécialisation en réseaux et cybersécurité</p>
+                            
+                            <p>- ESAIP École d'Ingénieur, Programme Grande École</p>
+                            
+                            <p>- Diplôme d'Ingénieur équivalent Master bac+5</p>
+                            
+                            <p>- Spécialisation en réseaux et cybersécurité</p>
+                            
                             <p>- Formation en cyberdéfense et sécurité des systèmes d'information</p>
                         </div>
                         <div class="icon-container">
@@ -278,7 +401,15 @@
                         </div>
                         <div class="education-description">
                             <p>- Université Technique d'Ostrava, République tchèque</p>
-                            <p>- Études en réseaux, cryptographie et algorithmie en anglais</p>
+                            <p>- Études en réseaux, cryptographie et algorithmie en anglais (Bachelor degré bac +3)</p>
+                        </div>
+                        <div class="icon-container">
+                            <i class="fas fa-globe-europe icon"></i>
+                            <span class="icon-text">Erasmus Espagne</span>
+                        </div>
+                        <div class="education-description">
+                            <p>- Université de Valladolid, Espagne</p>
+                            <p>- Architecture des réseaux, forensique et cybersécurité (Grado niveau bac +4)</p>
                         </div>
                         <div class="icon-container">
                             <i class="fas fa-graduation-cap icon"></i>

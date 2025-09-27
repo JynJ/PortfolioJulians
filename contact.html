@@ -96,6 +96,7 @@
             background: rgba(26, 26, 26, 0.8);
             border-radius: 15px;
             box-shadow: 0 0 20px #a020f0;
+            animation: bounceIn 1s ease-out;
         }
 
         .contact-header h2 {
@@ -103,23 +104,52 @@
             color: #a020f0;
             text-align: center;
             margin-bottom: 20px;
+            animation: glowPulse 2s ease-in-out infinite;
         }
 
         .contact-links {
             display: flex;
             justify-content: space-around;
             margin-bottom: 30px;
+            animation: slideInFromLeft 1s ease-out 0.3s both;
         }
 
         .contact-links a {
             text-decoration: none;
             color: #a020f0;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            padding: 15px 30px;
+            border-radius: 10px;
+            background-color: rgba(160, 32, 240, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: slideInFromRight 1s ease-out 0.6s both;
+        }
+
+        .contact-links a:nth-child(1) { animation-delay: 0.6s; }
+        .contact-links a:nth-child(2) { animation-delay: 0.8s; }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(160, 32, 240, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-links a:hover::before {
+            left: 100%;
         }
 
         .contact-links a:hover {
             color: #8b00cc;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(160, 32, 240, 0.4);
+            background-color: rgba(160, 32, 240, 0.2);
         }
 
         .contact-links a .fab {
@@ -146,11 +176,92 @@
             cursor: pointer;
             background: #a020f0;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            animation: slideInFromBottom 1s ease-out 1.0s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        input[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        input[type="submit"]:hover::before {
+            left: 100%;
         }
 
         input[type="submit"]:hover {
             background: #8b00cc;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(160, 32, 240, 0.4);
+        }
+
+        /* Animations spécifiques à Contact */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(160, 32, 240, 0.8);
+            }
         }
     </style>
     <script>
@@ -172,7 +283,7 @@
             <li><a href="aboutme.html">About Me</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="lep_associations.html">Mes Engagements</a></li>
-
+            <li><a href="esaip.html">ESAIP</a></li>
             <li><a href="experiences.html">Experience</a></li>
         </ul>
     </nav>
